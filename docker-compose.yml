@@ -1,0 +1,37 @@
+version: '2.1'
+services:
+    background:
+        build: ./background
+        container_name: bg-node
+        ports:
+          - "8080:8080"
+
+    data-node:
+    #build: ../
+    #container_name: srm912/tomr
+        image: srm912/tomr:3.0
+        depends_on:
+          background:
+              condition: service_healthy
+        ports:
+            - "5000"
+            - "5001"
+            - "5002"
+            - "5003"
+
+    load-balancer:
+      #build: ../
+      #container_name: srm912/tomr
+        image: srm912/tomr-lb:1.0
+        depends_on:
+            background:
+                condition: service_healthy
+            data-node:
+                condition: service_started
+        ports:
+            - "5000"
+            - "5001"
+            - "5002"
+            - "5003"
+            - "6000"
+            - "8002"
