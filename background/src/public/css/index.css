@@ -1,0 +1,19 @@
+body {padding: 20px;}
+.panel { width: 80% }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table { margin-bottom: 0px; }
+.first-column {
+  width: 40%;
+  float: left;
+}
+
+.second-column {
+  width: 50%;
+  float: right;
+}
+.top-bottom-buffer { 
+  margin-top:20px;
+  margin-bottom:20px;  
+}
+.bottom-buffer { margin-bottom:20px; }

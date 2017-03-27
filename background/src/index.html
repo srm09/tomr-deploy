@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/index.css">
+    <script src="public/js/jquery-3.1.1.slim.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1 class="text-center">TomR<small> Just another scalable & distributed k/v store</small></h1>
+      </div>
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" class="collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h5 class="mb-0">
+              <a>
+              Nodes
+              </a>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              <div class="row bottom-buffer">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header">Node information</div>
+                    <div class="card-block">
+                      <div class="card-text">
+                        <div class="first-column">
+                          <a href="#" class="thumbnail">
+                          <img class="img-responsive img-rounded" src="public/images/node.png" alt="" width="200px;" height="200px;" />
+                          </a>
+                        </div>
+                        <div class="second-column">
+                          <ul class="list-group">
+                            <li class="list-group-item">IP address: 10.20.30.41</li>
+                            <li class="list-group-item">Number of keys: 1100</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" style="float: right;" class="btn btn-primary" role="button">REMOVE</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header">Node information</div>
+                    <div class="card-block">
+                      <div class="card-text">
+                        <div class="first-column">
+                          <a href="#" class="thumbnail">
+                          <img class="img-responsive img-rounded" src="public/images/node.png" alt="" width="200px;" height="200px;" />
+                          </a>
+                        </div>
+                        <div class="second-column">
+                          <ul class="list-group">
+                            <li class="list-group-item">IP address: 10.20.30.41</li>
+                            <li class="list-group-item">Number of keys: 1100</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" style="float: right;" class="btn btn-primary" role="button">REMOVE</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row bottom-buffer">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header">Node information</div>
+                    <div class="card-block">
+                      <div class="card-text">
+                        <div class="first-column">
+                          <a href="#" class="thumbnail">
+                          <img class="img-responsive img-rounded" src="public/images/node.png" alt="" width="200px;" height="200px;" />
+                          </a>
+                        </div>
+                        <div class="second-column">
+                          <ul class="list-group">
+                            <li class="list-group-item">IP address: 10.20.30.41</li>
+                            <li class="list-group-item">Number of keys: 1100</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <a href="#" style="float: right;" class="btn btn-primary" role="button">REMOVE</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">
+              <a>
+              Populate data
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="top-bottom-buffer">
+                <div class="col-sm-10">
+                <p>
+                <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Key upload
+                </a>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                Bulk upload
+                </button>
+                </p>
+                </div>
+                <div class="col-sm-10">
+                <div class="collapse" id="collapseExample">
+                <div class="card">
+                <div class="card-header">
+                Add a key value <small>one pair at a time</small>
+                </div>
+                <div class="card-block">
+                <form>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Key</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Enter key">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Value</label>
+                    <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Enter value">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                    <button id="upload-btn" type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+                </form>
+                </div>
+
+                </div>
+                </div>
+                <div class="collapse" id="collapseExample2">
+                <div class="card">
+                <div class="card-header">
+                Add multiple key values <small>press the button and let the magic happen</small>
+                </div>
+                <div class="card-block">
+                <form>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Number of keys</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Enter number of keys to be uploaded">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                    <button id="bulk-upld-btn" type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
+                </form>
+                </div>
+
+                </div>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h5 class="mb-0">
+              <a>
+              Collapsible Group Item #3
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div><!-- end of container -->
+    </div>
+    <script src="public/js/tether.min.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+  </body>
+</html>

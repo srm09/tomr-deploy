@@ -3,7 +3,9 @@
   "description": "TomR User Interface",
   "author": "Sagar Muchhal",
   "dependencies": {
-    "express": ">= 1.2.0"
+    "express": ">= 1.2.0",
+    "chance" : "= 1.0.4",
+    "request": "=2.81.0"
   },
   "scripts": {
     "prestart": "npm install",

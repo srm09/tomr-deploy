@@ -9,7 +9,7 @@ services:
     data-node:
     #build: ../
     #container_name: srm912/tomr
-        image: srm912/tomr:3.0
+        image: srm912/tomr:4.8
         depends_on:
           background:
               condition: service_healthy
@@ -21,7 +21,7 @@ services:
 
     load-balancer:
       #build: ../
-      #container_name: srm912/tomr
+        container_name: lb
         image: srm912/tomr-lb:1.0
         depends_on:
             background:
@@ -35,3 +35,9 @@ services:
             - "5003"
             - "6000"
             - "8002"
+    client:
+        build: ./tomr-client
+        container_name: data-client
+        #image: srm912/tomr-client:1.0
+        ports:
+            - "8080"
