@@ -1,12 +1,15 @@
 FROM node:7.5
 
-RUN mkdir /tmp/code
-COPY ./src /tmp/code
+RUN mkdir /src
+ADD ./src/package.json /src/package.json
+RUN cd /src && npm install
+
+ADD ./src /src
 
 EXPOSE 8080
 
-WORKDIR /tmp/code
-CMD ["npm", "start"]
+WORKDIR /src
+CMD ["node", "server.js"]
 
 HEALTHCHECK --interval=1s --retries=5 \
     CMD curl -f http://localhost:8080/ || exit 1

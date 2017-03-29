@@ -34,7 +34,7 @@ var loadIndexPage = function(req, res) {
 }
 
 // To check health of the application
-app.get('/', (req, res) => { res.send(200) })
+app.get('/', (req, res) => { res.sendStatus(200) })
 
 app.get('/index', loadIndexPage)
 
