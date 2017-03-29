@@ -3,8 +3,10 @@
   "description": "TomR User Interface",
   "author": "Sagar Muchhal",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "chance": "= 1.0.4",
+    "ejs": "^1.0.0",
     "express": ">= 1.2.0",
-    "chance" : "= 1.0.4",
     "request": "=2.81.0"
   },
   "scripts": {

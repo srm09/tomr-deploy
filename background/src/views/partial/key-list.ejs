@@ -1,0 +1,27 @@
+<ul class="list-group">
+<%  if(nodes != undefined) {
+    for(var i=0; i<nodes.length; i++) { %>
+    <% var node = nodes[i] %>
+<li class="list-group-item">
+    <div class="container">
+    <div class="row">
+        <div class="col-3 text-middle">Node: <%= node.ipAddress%></div>
+        <div class="col-6">
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            List of keys
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% for(var j=0; node.keys!==undefined && j<node.keys.length; j++) { %>
+                <a class="dropdown-item" href="#"><%= node.keys[j] %></a>
+            <% }%>
+            </div>
+        </div>
+        </div>
+        <% var noOfKeys = (node.keys === undefined) ? 0 : node.keys.length %>
+        <div class="col-3 text-middle">Total keys: <%= noOfKeys%></div>
+    </div>
+    </div>
+</li>
+<% }}%>
+</ul>

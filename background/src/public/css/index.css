@@ -17,3 +17,8 @@ body {padding: 20px;}
   margin-bottom:20px;  
 }
 .bottom-buffer { margin-bottom:20px; }
+
+.text-middle {
+  text-align: center;
+  line-height: 38px;
+}
