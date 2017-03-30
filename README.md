@@ -15,7 +15,7 @@ docker-compose down
 
 Restart the deployment, using the following command
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 Once this command is successfully executed, docker-compose will automatically
