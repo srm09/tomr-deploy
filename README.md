@@ -8,7 +8,12 @@ multiple instances of data-node containers, hence use the command
 docker-compose scale data-node=3
 ```
 
-Use the following command to start the container
+Stop the scaled/started containers using the command
+```
+docker-compose down
+```
+
+Restart the deployment, using the following command
 ```
 docker-compose up
 ```
