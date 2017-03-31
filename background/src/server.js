@@ -176,7 +176,7 @@ function generateData(number, key, value) {
     if((key === undefined) || (value === undefined)) {
         var pairs = [] 
         for (var i=0; i<number; ++i) {
-            pairs.push(packageKVPair(chance.guid(), chance.word()))
+            pairs.push(packageKVPair(chance.hash({length: 10}), chance.word({length: 10})))
         }
         return packagePayload(pairs)
     }
@@ -184,7 +184,6 @@ function generateData(number, key, value) {
 }
 
 function updateDataNodeKeys(ipAddress, keys) {
-    console.log('updateDataNodeKeys message from ip: '+ipAddress+' with length: '+keys.length)
     for (var i=0; i <data_nodes.length; ++i) {
         var node = data_nodes[i]
         if(node.ipAddress === ipAddress) {

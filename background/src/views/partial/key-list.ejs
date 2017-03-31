@@ -5,15 +5,16 @@
 <li class="list-group-item">
     <div class="container">
     <div class="row">
-        <div class="col-3 text-middle">Node: <%= node.ipAddress%></div>
+        <div class="col-3 text-middle">Node: <%= node.name%></div>
         <div class="col-6">
         <div class="dropdown">
             <button class="btn btn-secondary btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             List of keys
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <% for(var j=0; node.keys!==undefined && j<node.keys.length; j++) { %>
-                <a class="dropdown-item" href="#"><%= node.keys[j] %></a>
+            <% for(var j=0; node.keys!==undefined && j<node.keys.length; j++) { 
+                var value = node.keys[j].value; value = value.slice(0, -2) %>
+                <a class="dropdown-item" href="#"><%= node.keys[j].key %> : <%= value%></a>
             <% }%>
             </div>
         </div>
