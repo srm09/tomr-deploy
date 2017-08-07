@@ -51,8 +51,12 @@
                             </div>
                             </div>
                             <div class="card-footer">
-                              <a href="#" style="float: right;" class="btn btn-danger invisible" role="button">ADD TO RING</a>
-                              <a href="#" style="float: right;" class="btn btn-primary" role="button">REMOVE</a>
+                              <input type="hidden" class="ipHiddenField" value="<%= node.ipAddress%>">
+                              <% if(node.status === "Initialized") { %> 
+                                <a href="#" style="float: right;" class="btn btn-primary" role="button" name="addRingBtn">ADD TO RING</a>
+                              <% } else { %>
+                                <a href="#" style="float: right;" class="btn btn-danger" role="button" name="removeRingBtn">REMOVE</a>
+                              <% } %>
                             </div>
                         </div>
                         </div>

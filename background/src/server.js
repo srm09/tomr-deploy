@@ -9,15 +9,18 @@ var PORT = 8080, nodeCount=0
 var data_nodes = []
 /*var data_nodes = [{
     ipAddress: '127.0.0.1',
-    keys: ["sagar", "muchhal"]
+    keys: ["sagar", "muchhal"],
+    status: 'Initialized'
 },
 {
     ipAddress: '127.0.0.1',
-    keys: ["sagar", "muchhal"]
+    keys: ["sagar", "muchhal"],
+    status: 'Ready'
 },
 {
     ipAddress: '127.0.0.1',
-    keys: ["sagar", "muchhal"]
+    //keys: ["sagar", "muchhal"],
+    status: 'Ready'
 }]*/
 
 var baseURL = "http://data-client:8080/client/rest"
@@ -38,24 +41,43 @@ app.get('/', (req, res) => { res.sendStatus(200) })
 
 app.get('/index', loadIndexPage)
 
-app.get('/data-node/:dns/:ip/:status', (req, res) => {
-  var dns = req.params.dns
+app.get('/data-node/:ip/:status', (req, res) => {
   var ip = req.params.ip
   var status = req.params.status
-  data_nodes.push({
-    'dnsName':dns,
-    'ipAddress':ip,
-    'name':'data-node-'+nodeCount,
-    'status': status
-  })
-  nodeCount++
+  updateNodeStatus(ip, status)
   res.sendStatus(200);
 })
+
+// This updates the status of an existing node or adds a new entry with the passed status 
+function updateNodeStatus(ipAddress, status) {
+    var updated = false
+    for (var i=0; !updated && i<data_nodes.length; ++i) {
+        var node = data_nodes[i]
+        if(node.ipAddress === ipAddress) {
+            node['status'] = status
+            updated = true
+        }
+    }
+    if(!updated) {
+        data_nodes.push({
+            'ipAddress':ipAddress,
+            'name':'data-node-'+nodeCount,
+            'status': status
+        })
+        nodeCount++
+    }
+}
 
 app.get('/data-nodes', (req, res) => {
   res.set('Content-Type', 'application/json')
   var nodes = {
-      dataNodes: data_nodes
+      dataNodes: data_nodes.map(function(node){
+          return {
+            'ipAddress':node.ipAddress,
+            'name':node.name,
+            'status': node.status
+          }
+      })
   }
   res.send(JSON.stringify(nodes))
 })
@@ -63,7 +85,6 @@ app.get('/data-nodes', (req, res) => {
 app.post('/data-node/keys', (req, res) => {
   var keys= req.body.keys
   var ipAddress = req.body.ipAddress
-  console.log('key list received: '+keys)
   updateDataNodeKeys(ipAddress, keys)
   res.sendStatus(200);
 })
@@ -106,7 +127,7 @@ app.get('/upload/:keys', (req, res) => {
 // Addition adnn removal of nodes
 app.get('/elastic/add/:ipAddress', (req, res) => {
     var ip = req.params.ipAddress
-    var url = baseURL+addRemoveNodeBas+addNode+ip
+    var url = baseURL+addRemoveNodeBase+addNode+ip
     sendElasticRequest(url, (err, resp, body) => {
         console.log('Node add request sent')
     })
@@ -114,7 +135,7 @@ app.get('/elastic/add/:ipAddress', (req, res) => {
 
 app.get('/elastic/remove/:ipAddress', (req, res) => {
     var ip = req.params.ipAddress
-    var url = baseURL+addRemoveNodeBas+removeNode+ip
+    var url = baseURL+addRemoveNodeBase+removeNode+ip
     sendElasticRequest(url, (err, resp, body) => {
         console.log('Node Remove request sent')
     })
@@ -155,7 +176,7 @@ function generateData(number, key, value) {
     if((key === undefined) || (value === undefined)) {
         var pairs = [] 
         for (var i=0; i<number; ++i) {
-            pairs.push(packageKVPair(chance.guid(), chance.word()))
+            pairs.push(packageKVPair(chance.hash({length: 10}), chance.word({length: 10})))
         }
         return packagePayload(pairs)
     }
